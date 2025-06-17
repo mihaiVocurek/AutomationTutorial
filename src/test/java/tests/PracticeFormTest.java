@@ -150,7 +150,6 @@ public class PracticeFormTest {
         Assert.assertEquals(tableDescriptionList.get(9).getText(), "State and City","State and City text is not displayed correct in the table");
         Assert.assertTrue(tableValueList.get(9).getText().contains(stateValue), "State value is not displayed correct in the table");
         Assert.assertTrue(tableValueList.get(9).getText().contains(cityValue), "City value is not displayed correct in the table");
-
         driver.quit();
     }
 }
