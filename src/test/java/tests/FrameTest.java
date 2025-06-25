@@ -1,29 +1,16 @@
 package tests;
 
+import sharedData.SharedData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class FrameTest {
-
-    public WebDriver driver;
+public class FrameTest extends SharedData {
 
     @Test
     public void testMethod() {
-        driver = new ChromeDriver();
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-
-        driver.get("https://demoqa.com/");
-
-        driver.manage().window().maximize();
-
-        //wait implicit
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         WebElement alertsFramesWindowsMenu = driver.findElement(By.xpath("//h5[text() = 'Alerts, Frame & Windows']"));
         executor.executeScript("arguments[0].click();", alertsFramesWindowsMenu);

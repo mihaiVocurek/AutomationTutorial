@@ -1,27 +1,20 @@
 package tests;
 
+import sharedData.SharedData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowsTest {
-
-    public WebDriver driver;
+public class WindowsTest extends SharedData {
 
     @Test
     public void testMethod(){
-        driver = new FirefoxDriver();
+
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-
-        driver.get("https://demoqa.com/");
-
-        driver.manage().window().maximize();
 
         WebElement alertsFramesWindowsMenu = driver.findElement(By.xpath("//h5[text() = 'Alerts, Frame & Windows']"));
         executor.executeScript("arguments[0].click();", alertsFramesWindowsMenu);

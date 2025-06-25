@@ -1,36 +1,26 @@
 package tests;
 
+import sharedData.SharedData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class WebTablesTest {
-    public WebDriver driver;
+public class WebTablesTest extends SharedData {
+
 
     @Test
     public void testMethod() {
-        //Deschidem o instanta de Chrome
-        driver = new ChromeDriver();
-        //pt force click
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-
-        //Accesam o pagina specifica
-        driver.get("https://demoqa.com");
 
         WebElement elementsMenu = driver.findElement(By.xpath("//h5[text() = 'Elements']"));
         executor.executeScript("arguments[0].click();", elementsMenu);
 
         WebElement webTableSubmenu = driver.findElement(By.xpath("//span[text() = 'Web Tables']"));
         executor.executeScript("arguments[0].click();", webTableSubmenu);
-
-        //Facem browser-ul sa fie in modul maximize
-        driver.manage().window().maximize();
 
         int tableSize = 3;
         List<WebElement> tableList = driver.findElements(By.xpath("//div[@class = 'rt-tr -even' or @class = 'rt-tr -odd']"));

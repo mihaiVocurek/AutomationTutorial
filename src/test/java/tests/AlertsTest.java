@@ -1,65 +1,49 @@
 package tests;
 
+import helperMethods.AlertHelper;
+import helperMethods.ElementHelper;
+import helperMethods.PageHelper;
+import sharedData.SharedData;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class AlertsTest {
-    public WebDriver driver;
+public class AlertsTest extends SharedData {
 
     @Test
     public void testMethod() {
-        driver = new ChromeDriver();
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
 
-        driver.get("https://demoqa.com/");
-
-        driver.manage().window().maximize();
-
-        //wait implicit
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        ElementHelper elementHelper = new ElementHelper(driver);
+        AlertHelper alertHelper = new AlertHelper(driver);
+        PageHelper pageHelper = new PageHelper(driver);
 
         WebElement alertsFramesWindowsMenu = driver.findElement(By.xpath("//h5[text() = 'Alerts, Frame & Windows']"));
-        executor.executeScript("arguments[0].click();", alertsFramesWindowsMenu);
+        elementHelper.clickJSElement(alertsFramesWindowsMenu);
 
         WebElement alertsElement = driver.findElement(By.xpath("//span[text() = 'Alerts']"));
-        executor.executeScript("arguments[0].click();", alertsElement);
+        elementHelper.clickJSElement(alertsElement);
 
         WebElement alertOkButtonElement = driver.findElement(By.id("alertButton"));
-        executor.executeScript("arguments[0].click();", alertOkButtonElement);
+        elementHelper.clickJSElement(alertOkButtonElement);
 
-        Alert alertOk = driver.switchTo().alert();
-        alertOk.accept();
+        alertHelper.acceptAlert();
 
         WebElement alertWaitButtonElement = driver.findElement(By.id("timerAlertButton"));
-        executor.executeScript("arguments[0].click();", alertWaitButtonElement);
+        elementHelper.clickJSElement(alertWaitButtonElement);
 
-        //Wait explicit pentru alerta
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.alertIsPresent());
-
-        Alert alertWait = driver.switchTo().alert();
-        alertWait.accept();
+        alertHelper.acceptAlert();
 
         WebElement alertOkCancelElement = driver.findElement(By.id("confirmButton"));
-        executor.executeScript("arguments[0].click();", alertOkCancelElement);
+        elementHelper.clickJSElement(alertOkCancelElement);
 
-        Alert alertOkCancel = driver.switchTo().alert();
-        alertOkCancel.dismiss();
+        alertHelper.dismissAlert();
 
         WebElement alertWithTextElement = driver.findElement(By.id("promtButton"));
-        executor.executeScript("arguments[0].click();", alertWithTextElement);
+        elementHelper.clickJSElement(alertWithTextElement);
 
-        Alert alertWithText = driver.switchTo().alert();
-        alertWithText.sendKeys("ceva test");
-        alertWithText.accept();
+        alertHelper.fillAlert("ceva text");
 
-        driver.quit();
-
+        pageHelper.scrollPage(0,400);
     }
-
 }

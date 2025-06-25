@@ -1,8 +1,7 @@
 package tests;
 
+import sharedData.SharedData;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -12,18 +11,12 @@ import java.io.File;
 import java.time.Duration;
 import java.util.*;
 
-public class PracticeFormTest {
-
-    public WebDriver driver;
+public class PracticeFormTest extends SharedData {
 
     @Test
     public void testMethod() {
-        //Deschidem o instanta de Chrome
-        driver = new EdgeDriver();
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
 
-        //Accesam o pagina specifica
-        driver.get("https://demoqa.com/");
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
 
         WebElement formsMenu = driver.findElement(By.xpath("//h5[text() = 'Forms']"));
         executor.executeScript("arguments[0].click();", formsMenu);
