@@ -1,5 +1,7 @@
 package tests;
 
+import helperMethods.ElementHelper;
+import helperMethods.PageHelper;
 import sharedData.SharedData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,16 +18,14 @@ public class PracticeFormTest extends SharedData {
     @Test
     public void testMethod() {
 
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        ElementHelper elementHelper = new ElementHelper(driver);
+        PageHelper pageHelper = new PageHelper(driver);
 
         WebElement formsMenu = driver.findElement(By.xpath("//h5[text() = 'Forms']"));
-        executor.executeScript("arguments[0].click();", formsMenu);
+        elementHelper.clickJSElement(formsMenu);
 
         WebElement practiceFormSubmenu = driver.findElement(By.xpath("//span[text() = 'Practice Form']"));
-        executor.executeScript("arguments[0].click();", practiceFormSubmenu);
-
-        //Facem browser-ul sa fie in modul maximize
-        driver.manage().window().maximize();
+        elementHelper.clickJSElement(practiceFormSubmenu);
 
         //wait implicit
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -67,7 +67,8 @@ public class PracticeFormTest extends SharedData {
         }
 
         //pt a da scroll in jos (daca valoare pozitiva , atunci face scroll la dr sau in jos)
-        executor.executeScript("window.scrollBy(0,200)","");
+        pageHelper.scrollPage(0,400);
+
         List<WebElement> hobbiesElementList = driver.findElements(By.cssSelector("div[id = 'hobbiesWrapper'] label[class='custom-control-label']"));
         List<String> hobbyValues = Arrays.asList("Reading", "Music");
         for(int index = 0; index<hobbiesElementList.size();index++){
@@ -86,21 +87,23 @@ public class PracticeFormTest extends SharedData {
         currentAddressElement.sendKeys(addressValue);
 
         WebElement stateElement = driver.findElement(By.id("state"));
-        executor.executeScript("arguments[0].click();",stateElement);
+        elementHelper.clickJSElement(stateElement);
+
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "NCR";
         stateInputElement.sendKeys(stateValue);
         stateInputElement.sendKeys(Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("city"));
-        executor.executeScript("arguments[0].click();",cityElement);
+        elementHelper.clickJSElement(cityElement);
+
         WebElement cityInputElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Noida";
         cityInputElement.sendKeys(cityValue);
         cityInputElement.sendKeys(Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
-        executor.executeScript("arguments[0].click()",submitElement);
+        elementHelper.clickJSElement(submitElement);
 
         //wait explicit
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -143,6 +146,5 @@ public class PracticeFormTest extends SharedData {
         Assert.assertEquals(tableDescriptionList.get(9).getText(), "State and City","State and City text is not displayed correct in the table");
         Assert.assertTrue(tableValueList.get(9).getText().contains(stateValue), "State value is not displayed correct in the table");
         Assert.assertTrue(tableValueList.get(9).getText().contains(cityValue), "City value is not displayed correct in the table");
-        driver.quit();
     }
 }

@@ -1,8 +1,8 @@
 package tests;
 
+import helperMethods.ElementHelper;
 import sharedData.SharedData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -10,13 +10,14 @@ public class FrameTest extends SharedData {
 
     @Test
     public void testMethod() {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+
+        ElementHelper elementHelper = new ElementHelper(driver);
 
         WebElement alertsFramesWindowsMenu = driver.findElement(By.xpath("//h5[text() = 'Alerts, Frame & Windows']"));
-        executor.executeScript("arguments[0].click();", alertsFramesWindowsMenu);
+        elementHelper.clickJSElement(alertsFramesWindowsMenu);
 
         WebElement framesElement = driver.findElement(By.xpath("//span[text() = 'Frames']"));
-        executor.executeScript("arguments[0].click();", framesElement);
+        elementHelper.clickJSElement(framesElement);
 
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='frame1']")));
         //driver.switchTo().frame("frame1");
@@ -32,8 +33,6 @@ public class FrameTest extends SharedData {
         System.out.println(secondBlockElement);
 
         driver.switchTo().parentFrame();
-
-        driver.quit();
 
     }
 }
