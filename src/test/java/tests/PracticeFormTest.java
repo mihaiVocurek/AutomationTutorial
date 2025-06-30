@@ -32,35 +32,35 @@ public class PracticeFormTest extends SharedData {
 
         //Identificam un element
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
-        firstNameElement.sendKeys("Gigel");
+        elementHelper.fillElement(firstNameElement,"Gigel");
 
         WebElement lastNameElement = driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
-        lastNameElement.sendKeys("Banel");
+        elementHelper.fillElement(lastNameElement,"Banel");
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[placeholder='name@example.com']"));
-        emailElement.sendKeys("gigel.banel@email.com");
+        elementHelper.fillElement(emailElement,"gigel.banel@email.com");
 
         WebElement mobileNoElement = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-        mobileNoElement.sendKeys("22222222222");
+        elementHelper.fillElement(mobileNoElement,"22222222222");
 
         WebElement subjectsElement = driver.findElement(By.id("subjectsInput"));
         List<String> subjectValues = Arrays.asList("Accounting", "Maths", "Arts");
         for(int index = 0; index<subjectValues.size(); index++){
-            subjectsElement.sendKeys(subjectValues.get(index));
-            subjectsElement.sendKeys(Keys.ENTER);
+            elementHelper.fillElement(subjectsElement,subjectValues.get(index));
+            elementHelper.pressElement(subjectsElement,Keys.ENTER);
         }
 
         String genderValue = "Male";
         List<WebElement> genderElementList = driver.findElements(By.cssSelector("div[id = 'genterWrapper'] label[class='custom-control-label']"));
         switch (genderValue){
             case "Male":
-                genderElementList.get(0).click();
+                elementHelper.clickElement(genderElementList.get(0));
                 break;
             case "Female":
-                genderElementList.get(1).click();
+                elementHelper.clickElement(genderElementList.get(1));
                 break;
             case "Other":
-                genderElementList.get(2).click();
+                elementHelper.clickElement(genderElementList.get(2));
                 break;
             default:
                 System.out.println("Gender is not available");
@@ -73,34 +73,32 @@ public class PracticeFormTest extends SharedData {
         List<String> hobbyValues = Arrays.asList("Reading", "Music");
         for(int index = 0; index<hobbiesElementList.size();index++){
             if(hobbyValues.contains(hobbiesElementList.get(index).getText())){
-                hobbiesElementList.get(index).click();
+                elementHelper.clickElement(hobbiesElementList.get(index));
             }
         }
 
         WebElement fileUpload = driver.findElement(By.id("uploadPicture"));
         String uploadValue = "src/test/resources/DEMOQA.png";
         File file = new File(uploadValue);
-        fileUpload.sendKeys(file.getAbsolutePath());
+        elementHelper.fillElement(fileUpload,file.getAbsolutePath());
 
         WebElement currentAddressElement = driver.findElement(By.id("currentAddress"));
         String addressValue = "Asta e adresaaaaaa";
-        currentAddressElement.sendKeys(addressValue);
+        elementHelper.fillElement(currentAddressElement,addressValue);
 
         WebElement stateElement = driver.findElement(By.id("state"));
         elementHelper.clickJSElement(stateElement);
-
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "NCR";
-        stateInputElement.sendKeys(stateValue);
-        stateInputElement.sendKeys(Keys.ENTER);
+        elementHelper.fillElement(stateInputElement,stateValue);
+        elementHelper.pressElement(stateInputElement,Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("city"));
         elementHelper.clickJSElement(cityElement);
-
         WebElement cityInputElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Noida";
-        cityInputElement.sendKeys(cityValue);
-        cityInputElement.sendKeys(Keys.ENTER);
+        elementHelper.fillElement(cityInputElement,cityValue);
+        elementHelper.pressElement(cityInputElement,Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         elementHelper.clickJSElement(submitElement);

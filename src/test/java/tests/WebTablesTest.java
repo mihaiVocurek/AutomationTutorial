@@ -34,27 +34,27 @@ public class WebTablesTest extends SharedData {
 
         WebElement firstNameElement = driver.findElement(By.id("firstName"));
         String firstNameValue = "Fanel";
-        firstNameElement.sendKeys(firstNameValue);
+        elementHelper.fillElement(firstNameElement,firstNameValue);
 
         WebElement lastNameElement = driver.findElement(By.id("lastName"));
         String lastNameValue = "Sandu";
-        lastNameElement.sendKeys(lastNameValue);
+        elementHelper.fillElement(lastNameElement,lastNameValue);
 
         WebElement emailElement = driver.findElement(By.id("userEmail"));
         String emailValue = "fanel.sandu@email.com";
-        emailElement.sendKeys(emailValue);
+        elementHelper.fillElement(emailElement,emailValue);
 
         WebElement ageElement = driver.findElement(By.id("age"));
         String ageValue = "22";
-        ageElement.sendKeys(ageValue);
+        elementHelper.fillElement(ageElement,ageValue);
 
         WebElement salaryElement = driver.findElement(By.id("salary"));
         String salaryValue = "5000";
-        salaryElement.sendKeys(salaryValue);
+        elementHelper.fillElement(salaryElement,salaryValue);
 
         WebElement departmentElement = driver.findElement(By.id("department"));
         String departmentValue = "IT";
-        departmentElement.sendKeys(departmentValue);
+        elementHelper.fillElement(departmentElement,departmentValue);
 
         WebElement addLine = driver.findElement(By.id("submit"));
         elementHelper.clickJSElement(addLine);
@@ -74,33 +74,33 @@ public class WebTablesTest extends SharedData {
 
         WebElement editFirstNameElement = driver.findElement(By.id("firstName"));
         String editFirstNameValue = "Mihai";
-        editFirstNameElement.clear();
-        editFirstNameElement.sendKeys(editFirstNameValue);
+        elementHelper.clearElement(editFirstNameElement);
+        elementHelper.fillElement(editFirstNameElement,editFirstNameValue);
 
         WebElement editLastNameElement = driver.findElement(By.id("lastName"));
         String editLastNameValue = "Kerucov";
-        editLastNameElement.clear();
-        editLastNameElement.sendKeys(editLastNameValue);
+        elementHelper.clearElement(editLastNameElement);
+        elementHelper.fillElement(editLastNameElement,editLastNameValue);
 
         WebElement editEmailElement = driver.findElement(By.id("userEmail"));
         String editEmailValue = "mihai.kerucov@email.com";
-        editEmailElement.clear();
-        editEmailElement.sendKeys(editEmailValue);
+        elementHelper.clearElement(editEmailElement);
+        elementHelper.fillElement(editEmailElement,editEmailValue);
 
         WebElement editAgeElement = driver.findElement(By.id("age"));
         String editAgeValue = "55";
-        editAgeElement.clear();
-        editAgeElement.sendKeys(editAgeValue);
+        elementHelper.clearElement(editAgeElement);
+        elementHelper.fillElement(editAgeElement,editAgeValue);
 
         WebElement editSalaryElement = driver.findElement(By.id("salary"));
         String editSalaryValue = "11111";
-        editSalaryElement.clear();
-        editSalaryElement.sendKeys(editSalaryValue);
+        elementHelper.clearElement(editSalaryElement);
+        elementHelper.fillElement(editSalaryElement,editSalaryValue);
 
         WebElement editDepartmentElement = driver.findElement(By.id("department"));
         String editDepartmentValue = "HR";
-        editDepartmentElement.clear();
-        editDepartmentElement.sendKeys(editDepartmentValue);
+        elementHelper.clearElement(editDepartmentElement);
+        elementHelper.fillElement(editDepartmentElement,editDepartmentValue);
 
         WebElement editLine = driver.findElement(By.id("submit"));
         elementHelper.clickJSElement(editLine);
