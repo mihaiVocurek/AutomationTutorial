@@ -1,6 +1,7 @@
 package tests;
 
 import helperMethods.ElementHelper;
+import helperMethods.TabHelper;
 import sharedData.SharedData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,6 +17,7 @@ public class WindowsTest extends SharedData {
     public void testMethod(){
 
         ElementHelper elementHelper = new ElementHelper(driver);
+        TabHelper tabHelper = new TabHelper(driver);
 
         WebElement alertsFramesWindowsMenu = driver.findElement(By.xpath("//h5[text() = 'Alerts, Frame & Windows']"));
         elementHelper.clickJSElement(alertsFramesWindowsMenu);
@@ -26,40 +28,18 @@ public class WindowsTest extends SharedData {
         WebElement newTabButton = driver.findElement(By.id("tabButton"));
         elementHelper.clickJSElement(newTabButton);
 
-        List<String> tabsList = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabsList.get(1));
-        System.out.println(driver.getCurrentUrl());
+        tabHelper.switchToSpecificTab(1);
 
-        //inchide tab-ul pe care sunt
-        driver.close();
+        tabHelper.closeCurrentTab();
 
-        driver.switchTo().window(tabsList.get(0));
-        System.out.println(driver.getCurrentUrl());
-
-        //din cauze reclamei , fortam site-ul sa acceseze un URL specific
-        //driver.navigate().to("https://demoqa.com/browser-windows");
+        tabHelper.switchToSpecificTab(0);
 
         WebElement newWindowButton = driver.findElement(By.id("windowButton"));
         elementHelper.clickJSElement(newWindowButton);
 
-        List<String> windowList = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(windowList.get(1));
-        System.out.println(driver.getCurrentUrl());
-        driver.close();
-        driver.switchTo().window(windowList.get(0));
-        System.out.println(driver.getCurrentUrl());
+        tabHelper.switchToSpecificTab(1);
+        tabHelper.closeCurrentTab();
+        tabHelper.switchToSpecificTab(0);
 
-/*
-        //merge doar in Firefox
-        WebElement newWindowsMessageButton = driver.findElement(By.id("messageWindowButton"));
-        elementHelper.clickJSElement(newWindowsMessageButton);
-
-        List<String> messageWindowList = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(messageWindowList.get(1));
-        WebElement textBody = driver.findElement(By.xpath("//body"));
-        System.out.println(textBody.getText());
-        driver.switchTo().window(messageWindowList.get(0));
-        System.out.println(driver.getCurrentUrl());
- */
     }
 }

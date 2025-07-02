@@ -27,10 +27,6 @@ public class PracticeFormTest extends SharedData {
         WebElement practiceFormSubmenu = driver.findElement(By.xpath("//span[text() = 'Practice Form']"));
         elementHelper.clickJSElement(practiceFormSubmenu);
 
-        //wait implicit
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        //Identificam un element
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         elementHelper.fillElement(firstNameElement,"Gigel");
 
@@ -46,8 +42,7 @@ public class PracticeFormTest extends SharedData {
         WebElement subjectsElement = driver.findElement(By.id("subjectsInput"));
         List<String> subjectValues = Arrays.asList("Accounting", "Maths", "Arts");
         for(int index = 0; index<subjectValues.size(); index++){
-            elementHelper.fillElement(subjectsElement,subjectValues.get(index));
-            elementHelper.pressElement(subjectsElement,Keys.ENTER);
+            elementHelper.fillPressElement(subjectsElement,subjectValues.get(index),Keys.ENTER);
         }
 
         String genderValue = "Male";
@@ -90,59 +85,50 @@ public class PracticeFormTest extends SharedData {
         elementHelper.clickJSElement(stateElement);
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "NCR";
-        elementHelper.fillElement(stateInputElement,stateValue);
-        elementHelper.pressElement(stateInputElement,Keys.ENTER);
+        elementHelper.fillPressElement(stateInputElement,stateValue,Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("city"));
         elementHelper.clickJSElement(cityElement);
         WebElement cityInputElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Noida";
-        elementHelper.fillElement(cityInputElement,cityValue);
-        elementHelper.pressElement(cityInputElement,Keys.ENTER);
+        elementHelper.fillPressElement(cityInputElement,cityValue,Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         elementHelper.clickJSElement(submitElement);
 
-        //wait explicit
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table//td[1]")));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table//td[2]")));
-
         List<WebElement> tableDescriptionList = driver.findElements(By.xpath("//table//td[1]"));
         List<WebElement> tableValueList = driver.findElements(By.xpath("//table//td[2]"));
 
-        Assert.assertEquals(tableDescriptionList.get(0).getText(), "Student Name","Student Name text is not displayed correct in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(firstNameElement.getText()), "First Name value is not displayed correct in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(lastNameElement.getText()), "Last Name value is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(0),"Student Name");
+        elementHelper.validateElementContainsText(tableValueList.get(0), firstNameElement.getText());
+        elementHelper.validateElementContainsText(tableValueList.get(0), lastNameElement.getText());
 
-        Assert.assertEquals(tableDescriptionList.get(1).getText(), "Student Email","Student Email text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(1).getText(), "gigel.banel@email.com","Email value is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(1), "Student Email");
+        elementHelper.validateElementEqualsText(tableValueList.get(1), "gigel.banel@email.com");
 
-        Assert.assertEquals(tableDescriptionList.get(2).getText(), "Gender","Gender text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(2).getText(), genderValue,"Gender value is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(2), "Gender");
+        elementHelper.validateElementEqualsText(tableValueList.get(2), genderValue);
 
-        Assert.assertEquals(tableDescriptionList.get(3).getText(), "Mobile","Mobile text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(3).getText(), "2222222222","Mobile value is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(3), "Mobile");
+        elementHelper.validateElementEqualsText(tableValueList.get(3), "2222222222");
 
-        //tema de facut restul de assert-uri
-        //transformare lista in string delimitat cu virgula si spatiu pt hobbies si subjects- de cautat pe net
         String allSubjects = String.join(", ",subjectValues);
-        Assert.assertEquals(tableDescriptionList.get(5).getText(),"Subjects","Subjects text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(5).getText(),allSubjects,"Subject values are not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(5),"Subjects");
+        elementHelper.validateElementEqualsText(tableValueList.get(5),allSubjects);
 
         String allHobbies = String.join(", ",hobbyValues);
-        Assert.assertEquals(tableDescriptionList.get(6).getText(),"Hobbies","Hobbies text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(6).getText(),allHobbies,"Hobby values are not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(6),"Hobbies");
+        elementHelper.validateElementEqualsText(tableValueList.get(6),allHobbies);
 
         String fileName = uploadValue.substring(19);
-        Assert.assertEquals(tableDescriptionList.get(7).getText(), "Picture", "Picture text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(7).getText(), fileName, "Picture filename is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(7), "Picture");
+        elementHelper.validateElementEqualsText(tableValueList.get(7), fileName);
 
-        Assert.assertEquals(tableDescriptionList.get(8).getText(), "Address", "Address text is not displayed correct in the table");
-        Assert.assertEquals(tableValueList.get(8).getText(), addressValue, "Address value is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(8), "Address");
+        elementHelper.validateElementEqualsText(tableValueList.get(8), addressValue);
 
-        Assert.assertEquals(tableDescriptionList.get(9).getText(), "State and City","State and City text is not displayed correct in the table");
-        Assert.assertTrue(tableValueList.get(9).getText().contains(stateValue), "State value is not displayed correct in the table");
-        Assert.assertTrue(tableValueList.get(9).getText().contains(cityValue), "City value is not displayed correct in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(9), "State and City");
+        elementHelper.validateElementContainsText(tableValueList.get(9),stateValue);
+        elementHelper.validateElementContainsText(tableValueList.get(9),cityValue);
     }
 }
