@@ -68,7 +68,7 @@ public class PracticeFormTest extends SharedData {
         List<String> hobbyValues = Arrays.asList("Reading", "Music");
         for(int index = 0; index<hobbiesElementList.size();index++){
             if(hobbyValues.contains(hobbiesElementList.get(index).getText())){
-                elementHelper.clickElement(hobbiesElementList.get(index));
+                elementHelper.clickJSElement(hobbiesElementList.get(index));
             }
         }
 

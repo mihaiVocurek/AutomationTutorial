@@ -30,7 +30,7 @@ public class WebTablesTest extends SharedData {
 
         //Identificam un element
         WebElement addElement = driver.findElement(By.id("addNewRecordButton"));
-        elementHelper.clickElement(addElement);
+        elementHelper.clickJSElement(addElement);
 
         WebElement firstNameElement = driver.findElement(By.id("firstName"));
         String firstNameValue = "Fanel";
