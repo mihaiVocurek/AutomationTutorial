@@ -13,10 +13,10 @@ public class PracticeFormTest extends SharedData {
     @Test
     public void testMethod() {
 
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithFormsMenu();
 
-        FormsPage formsPage = new FormsPage(driver);
+        FormsPage formsPage = new FormsPage(getDriver());
         formsPage.interactWithPracticeFormSubmenu();
 
         String firstNameValue = "Gigel";
@@ -31,7 +31,7 @@ public class PracticeFormTest extends SharedData {
         String stateValue = "NCR";
         String cityValue = "Noida";
 
-        PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
+        PracticeFormPage practiceFormPage = new PracticeFormPage(getDriver());
         practiceFormPage.fillEntireForm(firstNameValue, lastNameValue, emailValue, mobileValue,subjectValues,genderValue,
                                         hobbyValues,uploadValue,addressValue, stateValue, cityValue);
 

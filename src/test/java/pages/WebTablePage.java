@@ -15,41 +15,41 @@ public class WebTablePage extends BasePage{
     }
 
     @FindBy(xpath = "//div[@class = 'rt-tr -even' or @class = 'rt-tr -odd']")
-    public List<WebElement> tableList;
+    private List<WebElement> tableList;
     @FindBy(id = "addNewRecordButton")
-    public WebElement addElement;
+    private WebElement addElement;
     @FindBy(id = "firstName")
-    public WebElement firstNameElement;
+    private WebElement firstNameElement;
     @FindBy(id = "lastName")
-    public WebElement lastNameElement;
+    private WebElement lastNameElement;
     @FindBy(id = "userEmail")
-    public WebElement emailElement;
+    private WebElement emailElement;
     @FindBy(id = "age")
-    public WebElement ageElement;
+    private WebElement ageElement;
     @FindBy(id = "salary")
-    public WebElement salaryElement;
+    private WebElement salaryElement;
     @FindBy(id = "department")
-    public WebElement departmentElement;
+    private WebElement departmentElement;
     @FindBy(id = "submit")
-    public WebElement submitElement;
+    private WebElement submitElement;
 
     @FindBy(id = "edit-record-4")
-    public WebElement editElement;
+    private WebElement editElement;
     @FindBy(id = "firstName")
-    public WebElement editFirstNameElement;
+    private WebElement editFirstNameElement;
     @FindBy(id = "lastName")
-    public WebElement editLastNameElement;
+    private WebElement editLastNameElement;
     @FindBy(id = "userEmail")
-    public WebElement editEmailElement;
+    private WebElement editEmailElement;
     @FindBy(id = "age")
-    public WebElement editAgeElement;
+    private WebElement editAgeElement;
     @FindBy(id = "salary")
-    public WebElement editSalaryElement;
+    private WebElement editSalaryElement;
     @FindBy(id = "department")
-    public WebElement editDepartmentElement;
+    private WebElement editDepartmentElement;
 
     @FindBy(id = "delete-record-4")
-    public WebElement deleteElement;
+    private WebElement deleteElement;
 
     public void addNewEntry(int tableSize, String firstNameValue, String lastNameValue, String emailValue,
                             String ageValue, String salaryValue, String departmentValue){

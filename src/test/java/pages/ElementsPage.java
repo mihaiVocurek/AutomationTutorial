@@ -11,7 +11,7 @@ public class ElementsPage extends BasePage {
     }
 
     @FindBy(xpath = "//span[text() = 'Web Tables']")
-    public WebElement elementWebTable;
+    private WebElement elementWebTable;
 
     public void interactWithWebTablesSubmenu(){
         elementHelper.clickJSElement(elementWebTable);

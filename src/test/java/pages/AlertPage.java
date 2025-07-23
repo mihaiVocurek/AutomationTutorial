@@ -12,13 +12,13 @@ public class AlertPage extends BasePage {
     }
 
     @FindBy(id = "alertButton")
-    public WebElement alertOkButtonElement;
+    private WebElement alertOkButtonElement;
     @FindBy(id = "timerAlertButton")
-    public WebElement alertWaitButtonElement;
+    private WebElement alertWaitButtonElement;
     @FindBy(id = "confirmButton")
-    public WebElement alertOkCancelElement;
+    private WebElement alertOkCancelElement;
     @FindBy(id = "promtButton")
-    public WebElement alertWithTextElement;
+    private WebElement alertWithTextElement;
 
     public void dealAlertOk(){
         elementHelper.clickJSElement(alertOkButtonElement);

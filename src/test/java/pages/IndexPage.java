@@ -12,11 +12,11 @@ public class IndexPage extends BasePage{
     }
 
     @FindBy(xpath = "//h5[text() = 'Alerts, Frame & Windows']")
-    public WebElement elementAlertsFrameWindows;
+    private WebElement elementAlertsFrameWindows;
     @FindBy(xpath = "//h5[text() = 'Elements']")
-    public WebElement elementsMenu;
+    private WebElement elementsMenu;
     @FindBy(xpath = "//h5[text() = 'Forms']")
-    public WebElement formsMenu;
+    private WebElement formsMenu;
 
     public void interactWithAlertsFrameWindowMenu(){
         elementHelper.clickJSElement(elementAlertsFrameWindows);
