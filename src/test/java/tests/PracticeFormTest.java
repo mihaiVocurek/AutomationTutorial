@@ -35,8 +35,8 @@ public class PracticeFormTest extends SharedData {
         practiceFormPage.fillEntireForm(firstNameValue, lastNameValue, emailValue, mobileValue,subjectValues,genderValue,
                                         hobbyValues,uploadValue,addressValue, stateValue, cityValue);
 
-        practiceFormPage.validateFormValues(firstNameValue,lastNameValue,emailValue,genderValue,mobileValue,subjectValues,hobbyValues,
-                uploadValue,addressValue,stateValue,cityValue);
+        practiceFormPage.validateFormValues(firstNameValue,lastNameValue,emailValue,genderValue,mobileValue,subjectValues,
+                hobbyValues,uploadValue,addressValue,stateValue,cityValue);
 
     }
 }
