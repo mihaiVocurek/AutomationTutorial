@@ -3,6 +3,7 @@ package sharedData;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -16,9 +17,19 @@ public class SharedData {
 
     @BeforeMethod
     public void prepareEnvironment(){
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("window-size=1920,1080");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless=new");
+        options.addArguments("--incognito");
+
+        driver = new ChromeDriver(options);
+
         driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         LoggerUtility.startTest(this.getClass().getSimpleName());
