@@ -2,6 +2,20 @@ name: Regression Pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Choose browser:'
+        required: true
+        default: 'Chrome'
+        type: choice
+        options:
+          - 'Chrome'
+          - 'Edge'
+      threads:
+        description: 'Choose number of threads: (1-4)'
+        required: true
+        default: 2
+        type: number
 
 jobs:
   build:
@@ -17,4 +31,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run regression suite
-      run: mvn clean install -Dbrowser=Chrome -Dthreads=2 -Dcicd=true
+      run: mvn clean install -Dbrowser=${{ github.event.inputs.browser }} -Dthreads=${{ github.event.inputs.threads}} -Dcicd=true
