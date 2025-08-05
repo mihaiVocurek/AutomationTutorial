@@ -24,12 +24,15 @@ public class ChromeBrowser implements Browser{
 
     @Override
     public void configureBrowser() {
+        boolean cicd = Boolean.parseBoolean(System.getProperty("cicd"));
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("window-size=1920,1080");
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--disable-infobars");
         chromeOptions.addArguments("--disable-extensions");
-        chromeOptions.addArguments("--headless=new");
+        if (cicd){
+            chromeOptions.addArguments("--headless=new");
+        }
         chromeOptions.addArguments("--incognito");
     }
 
