@@ -5,12 +5,13 @@ import pages.IndexPage;
 import pages.PracticeFormPage;
 import sharedData.SharedData;
 import org.testng.annotations.Test;
+import suite.Suite;
 
 import java.util.*;
 
 public class PracticeFormTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.FORMS_SUITE})
     public void testMethod() {
 
         IndexPage indexPage = new IndexPage(getDriver());

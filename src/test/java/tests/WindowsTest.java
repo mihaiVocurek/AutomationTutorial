@@ -5,10 +5,11 @@ import pages.IndexPage;
 import pages.WindowsPage;
 import sharedData.SharedData;
 import org.testng.annotations.Test;
+import suite.Suite;
 
 public class WindowsTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE,Suite.ALERTWINDOWFRAME_SUITE})
     public void testMethod(){
 
         IndexPage indexPage = new IndexPage(getDriver());

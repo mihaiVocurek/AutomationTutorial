@@ -16,6 +16,10 @@ on:
         required: true
         default: 2
         type: number
+      tags:
+        description: 'Provide suite tag or tags'
+        required: true
+        default: '@Regression,@Sanity'
 
 jobs:
   build:
@@ -31,4 +35,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run regression suite
-      run: mvn clean install -Dbrowser=${{ github.event.inputs.browser }} -Dthreads=${{ github.event.inputs.threads}} -Dcicd=true -Dgroups=@Regression
+      run: mvn clean install -Dbrowser=${{ github.event.inputs.browser }} -Dthreads=${{ github.event.inputs.threads}} -Dcicd=true -Dgroups=${{ github.event.inputs.tags}}
