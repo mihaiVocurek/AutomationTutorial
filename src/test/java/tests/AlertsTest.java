@@ -1,9 +1,9 @@
 package tests;
 
-import pages.AlertFrameWindowPage;
-import pages.AlertPage;
-import pages.IndexPage;
-import sharedData.SharedData;
+import frontend.pages.AlertFrameWindowPage;
+import frontend.pages.AlertPage;
+import frontend.pages.IndexPage;
+import frontend.sharedData.SharedData;
 import org.testng.annotations.Test;
 import suite.Suite;
 

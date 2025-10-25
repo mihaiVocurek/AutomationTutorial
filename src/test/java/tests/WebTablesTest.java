@@ -1,9 +1,9 @@
 package tests;
 
-import pages.ElementsPage;
-import pages.IndexPage;
-import pages.WebTablePage;
-import sharedData.SharedData;
+import frontend.pages.ElementsPage;
+import frontend.pages.IndexPage;
+import frontend.pages.WebTablePage;
+import frontend.sharedData.SharedData;
 import org.testng.annotations.Test;
 import suite.Suite;
 

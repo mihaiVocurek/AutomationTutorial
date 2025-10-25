@@ -1,4 +1,4 @@
-package sharedData;
+package frontend.sharedData;
 
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +16,6 @@ public class SharedData {
         LoggerUtility.startTest(this.getClass().getSimpleName());
 
         browser = System.getProperty("browser");
-
         switch (browser){
             case "Chrome":
                 ChromeBrowser chromeBrowser = new ChromeBrowser();
@@ -29,7 +28,6 @@ public class SharedData {
                 driver = edgeBrowser.getDriver();
                 break;
         }
-
         LoggerUtility.infoLog("The browser " + browser + " was opened with success");
     }
 

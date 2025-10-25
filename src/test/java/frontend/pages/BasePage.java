@@ -1,4 +1,4 @@
-package pages;
+package frontend.pages;
 
 import helperMethods.*;
 import org.openqa.selenium.WebDriver;

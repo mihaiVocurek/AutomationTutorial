@@ -1,16 +1,13 @@
-package pages;
+package frontend.pages;
 
 import loggerUtility.LoggerUtility;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class PracticeFormPage extends BasePage {
 

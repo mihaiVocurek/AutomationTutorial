@@ -1,9 +1,8 @@
-package pages;
+package frontend.pages;
 
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.bidi.log.Log;
 import org.openqa.selenium.support.FindBy;
 
 public class WindowsPage extends BasePage{

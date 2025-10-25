@@ -1,9 +1,9 @@
 package tests;
 
-import pages.FormsPage;
-import pages.IndexPage;
-import pages.PracticeFormPage;
-import sharedData.SharedData;
+import frontend.pages.FormsPage;
+import frontend.pages.IndexPage;
+import frontend.pages.PracticeFormPage;
+import frontend.sharedData.SharedData;
 import org.testng.annotations.Test;
 import suite.Suite;
 
